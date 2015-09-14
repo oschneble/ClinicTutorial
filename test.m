@@ -1,5 +1,8 @@
-function [y] = test(h,x):
-%calculate output y from input x and response function h
+% This tests whether the impulse_response.m function works
 
-y = h.*x;
-end
+fs=10;
+t=-1:1/fs:1;
+x=cos(2*pi*t);    % input signal
+y=3*cos(2*pi*t);  % output signal
+[h,t]=impulse_response(x,y,fs);   % we expect the impulse response to be
+amplitude=(1/fs)*trapz(h)         % a dirac delta with amplitude
